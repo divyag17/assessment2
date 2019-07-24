@@ -3,10 +3,27 @@
         cart
     </title>
     <head>
+        <style>
+            fieldset{
+            width: 40%;
+            height: 70%;
+            box-align: center;
+            margin-left: 35%;
+            margin-right: 35%;
+        }
+        #tb{
+            box-align: center;
+            margin-left: 35%;
+            margin-right: 35%;
+        }
+        td,th,legend{
+            font-size: 20px;
+        }
+        </style>
         <script type="text/javascript" src="email.service.js"></script>
         <script type="text/javascript">
             const cartshow=()=>{
-                const _url = 'http://localhost:1269/cart';
+            const _url = 'http://localhost:1269/cart';
             fetch(_url,{})
             .then(res=>res.json())
             .then(items=>{
@@ -35,7 +52,13 @@
                         </tr>`
             });
             const add1= (data)=>{
-                parseInt(data)+=1;
+                data+=1;
+                
+                
+                
+            }
+            const sub1= (data)=>{
+                data-=1;
                 
             }
             const _table = `<table>
@@ -49,20 +72,20 @@
                                 ${rows}
                             </table>`
             document.getElementById('cart').innerHTML = _table;
-        } 
-       
+            } 
         </script>
     </head>
     
     <body onload="cartshow()">
-        <a href="main.html"><img src="backimg.png" width="25px" height="25px"></a>
-        <fieldset >
+            <a href="main.html"><img src="backimg.png" width="25px" height="25px"></a>
+        <fieldset ><legend> YOUR CART</legend>
                 <div id="cart">
 
                 </div>
                 Total cost:<input type="text" id="total" >
+                <a href="buy.html" ><img src="check.png" width="30px" height="30px"></a>
         </fieldset>
-        <a href="buy.html" >checkout</a>
+        
     </body>
 </html>
 
